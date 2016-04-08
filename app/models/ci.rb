@@ -10,19 +10,25 @@ class Ci
 
   class << self
     def enqueued
-      DelayedJob.count
+      counter('enqueued'){ DelayedJob.count }
     end
 
     def working
-      DelayedJob.where('locked_at IS NOT NULL').count
+      counter('working'){ DelayedJob.where('locked_at IS NOT NULL').count }
     end
 
     def pending
-      DelayedJob.where(attempts: 0, locked_at: nil).count
+      counter('pending'){ DelayedJob.where(attempts: 0, locked_at: nil).count }
     end
 
     def failed
-      DelayedJob.where('last_error IS NOT NULL').count
+      counter('failed'){ DelayedJob.where('last_error IS NOT NULL').count }
+    end
+
+    def counter type
+      counter = yield
+      puts "#{Time.now.to_s(:db)} #{type}: #{counter}"
+      counter
     end
 
     def statsd
