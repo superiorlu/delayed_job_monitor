@@ -1,3 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "cloudinsight@oneapm.com"
+  default from: "oneapm@sina.com"
+  layout 'mailer'
 end

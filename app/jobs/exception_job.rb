@@ -2,6 +2,6 @@ class ExceptionJob < ActiveJob::Base
   queue_as :default
 
   def perform 
-    1 / 0  
+    raise StandardError, 'This job error.'
   end
 end

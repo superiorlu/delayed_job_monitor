@@ -10,5 +10,29 @@
 
 <%= yield %>
 
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('button').on('click', function (){
+       var button = $(this);
+       var link = button.data('link');
+       var attr_class = button.data('class');
+       var message = button.data('message');
+       $.ajax({
+         url: "" + link,
+         cache: false,
+         success: function(){
+           $("#result").fadeIn("slow");
+           $("#result").attr("class", attr_class);
+           $("#result").html(message);
+         },
+         error: function () {
+           $("#result").attr("class", attr_class);
+           $("#result").html(message);
+         }
+       });
+    });
+  });
+</script>
+
 </body>
 </html>
