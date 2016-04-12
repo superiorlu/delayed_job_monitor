@@ -7,7 +7,7 @@
 #
 set :environment, ENV['RAILS_ENV'] || 'development'
 set :app_path, File.expand_path('../', File.dirname(__FILE__))
-set :output, "log/cron_log.log"
+set :output, "log/crontab.log"
 #
 # every 2.hours do
 #   command "/usr/bin/some_great_command"
