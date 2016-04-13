@@ -30,6 +30,12 @@ gem 'oneapm_ci', require: false
 
 gem 'whenever'
 
+# gem 'rack-queue-metrics', path: '../rack-queue-metrics/'
+
+gem 'unicorn'
+
+gem 'unicorn_metrics', path: '../unicorn-metrics/'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
